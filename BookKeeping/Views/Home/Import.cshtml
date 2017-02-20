@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Импорт";
+}
+
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="col-md-2">
+        <input class="btn" type="file" name="file" accept="text/plain" required />
+    </div>
+    <div class="col-md-offset-1 col-md-7">
+        <input class="btn btn-primary" type="submit" />
+    </div>    
+}

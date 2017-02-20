@@ -1,0 +1,46 @@
+﻿@using BookKeeping.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <header class="row" style="margin-top: 10px">
+            <ul class="nav nav-pills">
+                <li role="presentation">@Html.ActionLink("Главная", "Index", "Home", new { area = "" }, null)</li>
+                <li role="presentation">@Html.ActionLink("Список", "List", "Home", new { area = "" }, null)</li>
+                <li role="presentation">@Html.ActionLink("Импорт", "Import", "Home", new { area = "" }, null)</li>
+            </ul>
+        </header>
+        <div class="row">
+            @if (ViewBag.Status != null)
+            {
+                <div class="alert alert-@ViewBag.Status">
+                    @ViewBag.Message
+                </div>
+            }            
+        </div>
+        <main class="row" style="margin-top: 10px; margin-bottom: 10px;">
+            @RenderBody()
+        </main>
+        <footer class="navbar-fixed-bottom row" style="margin-top: 10px;">
+            <hr>
+            <div class="text-center h4" style="vertical-align: middle">
+                &copy; @DateTime.Now.Year - Тестовое задание для "Мое дело" выполнил Панов Илья.
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/randomColor")
+    @Scripts.Render("~/bundles/site")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@using BookKeeping.Models
+
+@{
+    ViewBag.Title = "Предпросмотр";
+}
+
+<h2>Предпросмотр</h2>
+
+@using (Html.BeginForm("Save", "Home", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" checked>Все</label>
+                </div>
+            </th>
+            <th>
+                @nameof(Платежное_Поручение.Номер)
+            </th>
+            <th>
+                @nameof(Платежное_Поручение.Дата)
+            </th>
+            <th>
+                @nameof(Платежное_Поручение.Сумма)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.Items)
+        {
+            var duplicateClass = item.HasDuplicates ? "duplicate" : "";
+
+            <tr class="@duplicateClass" data-id="@item.Value.Номер">
+                <td>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="" data-target="#@item.Value.Номер" checked></label>
+                    </div>
+                </td>
+                <td>
+                    @item.Value.Номер
+                </td>
+                <td>
+                    @item.Value.Дата
+                </td>
+                <td>
+                    @item.Value.Сумма
+                </td>
+                <td>
+                    <button class="btn" data-toggle="modal" data-target="#@item.Value.GetHashCode()">
+                        Подробно
+                    </button>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    foreach (var item in ViewBag.Items) {
+        @Html.Partial("ModelDetailsDialog", new ViewDataDictionary()
+        {
+            ["Model"] = item,
+            ["Id"] = item.Value.GetHashCode()
+        });
+    }
+
+    <input class="btn btn-primary btn-lg" type="submit" value="Сохранить" />
+}

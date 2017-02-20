@@ -1,0 +1,27 @@
+﻿@using BookKeeping.Models;
+
+<div class="modal fade" id="@ViewBag.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">@ViewBag.Model.Value.GetType().Name</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    @foreach (var pair in CommonHelper.GetProperties(ViewBag.Model.Value))
+                    {
+                        <tr>
+                            <input type="hidden" name="@pair.Key" value="@pair.Value" />
+                            <th>@pair.Key</th>
+                            <td>@pair.Value</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
