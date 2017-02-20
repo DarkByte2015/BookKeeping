@@ -1,1 +1,42 @@
-BookKeeping
+Для развертывания приложения надо создать БД MS SQL Server с именем "BookKeeping" и создать таблицу с помощью этого запроса:
+
+```sql
+CREATE TABLE [dbo].[Платежное_Поручение] (
+    [Id]                 INT            IDENTITY (1, 1) NOT NULL,
+    [Номер]              INT            NULL,
+    [Дата]               DATETIME2 (7)  NULL,
+    [Сумма]              DECIMAL (18)   NULL,
+    [ДатаПоступило]      DATETIME2 (7)  NULL,
+    [ДатаСписано]        DATETIME2 (7)  NULL,
+    [ПлательщикСчет]     NVARCHAR (100) NULL,
+    [Плательщик]         NVARCHAR (200) NULL,
+    [Плательщик1]        NVARCHAR (200) NULL,
+    [Плательщик2]        NVARCHAR (200) NULL,
+    [Плательщик3]        NVARCHAR (200) NULL,
+    [Плательщик4]        NVARCHAR (200) NULL,
+    [ПлательщикРасчСчет] NVARCHAR (100) NULL,
+    [ПлательщикБанк1]    NVARCHAR (100) NULL,
+    [ПлательщикБанк2]    NVARCHAR (100) NULL,
+    [ПлательщикБИК]      BIGINT         NULL,
+    [ПлательщикИНН]      BIGINT         NULL,
+    [ПлательщикКПП]      BIGINT         NULL,
+    [ПолучательСчет]     NVARCHAR (100) NULL,
+    [ПолучательБИК]      BIGINT         NULL,
+    [ПолучательИНН]      BIGINT         NULL,
+    [ПолучательКПП]      BIGINT         NULL,
+    [Получатель]         NVARCHAR (200) NULL,
+    [Получатель1]        NVARCHAR (200) NULL,
+    [Получатель2]        NVARCHAR (200) NULL,
+    [Получатель3]        NVARCHAR (200) NULL,
+    [Получатель4]        NVARCHAR (200) NULL,
+    [ПолучательРасчСчет] NVARCHAR (100) NULL,
+    [ПолучательБанк1]    NVARCHAR (100) NULL,
+    [ПолучательБанк2]    NVARCHAR (100) NULL,
+    [ПолучательКорсчет]  NVARCHAR (100) NULL,
+    [НазначениеПлатежа]  NVARCHAR (200) NULL,
+    [ВидПлатежа]         NVARCHAR (100) NULL,
+    [ВидОплаты]          TINYINT        NULL,
+    [Очередность]        TINYINT        NULL,
+    CONSTRAINT [PK_Платежное_Поручение] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+```
